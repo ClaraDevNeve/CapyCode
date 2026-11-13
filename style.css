@@ -1,0 +1,368 @@
+/* ================= Cores e base ================= */
+:root {
+  --marrom: #7a4520;
+  --marrom-escuro: #5a3620;
+  --amarelo: #f7d445;
+  --branco: #ffffff;
+  --cinza: #a9a9a9;
+  --azul-botao: #2a6fb5;
+  --agua: #2f74b5;
+  --grama: #44b04a;
+  --grama-escura: #2f8a35;
+  --capi: #b07548;
+  --capi-escura: #7a4a2c;
+  --erro: #d9412c;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--marrom);
+  color: var(--branco);
+  font-family: "Baloo 2", "Segoe UI", sans-serif;
+  line-height: 1.45;
+}
+
+code {
+  font-family: Consolas, "Courier New", monospace;
+  background: var(--marrom-escuro);
+  color: var(--amarelo);
+  padding: 0 0.35em;
+  border-radius: 4px;
+  font-size: 0.92em;
+}
+
+dfn { font-style: normal; color: var(--amarelo); }
+
+.visualmente-oculto {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ================= Layout em 2 colunas ================= */
+.jogo {
+  flex: 1;
+  display: flex;
+}
+
+.painel {
+  flex: 0 0 51%;
+  max-width: 51%;
+  padding: 2rem 3.5rem 2.5rem 4rem;
+}
+
+.lago {
+  flex: 1;
+  display: flex;
+  margin-right: 2.2rem; /* faixa marrom à direita, como no protótipo */
+  /* ondas desenhadas com SVG + grama na parte de baixo */
+  background:
+    linear-gradient(to bottom, transparent 79%, var(--grama) 79%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='28'%3E%3Cpath d='M0 14 Q15 6 30 14 T60 14 T90 14 T120 14' fill='none' stroke='%234a8fd0' stroke-width='2'/%3E%3C/svg%3E"),
+    var(--agua);
+}
+
+/* ================= Cabeçalho (título + nível) ================= */
+.topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.logo {
+  margin: 0;
+  color: var(--amarelo);
+  font-size: 3.6rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.niveis {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  padding: 0.6rem 1.4rem;
+  background: var(--marrom-escuro);
+  border-radius: 10px;
+  font-weight: 800;
+  font-size: 1.5rem;
+}
+.niveis p {
+  margin: 0;
+  color: var(--amarelo);
+  text-transform: uppercase;
+}
+.niveis p strong { margin-left: 0.5rem; }
+.seta {
+  color: var(--branco);
+  text-decoration: none;
+  font-size: 1.8rem;
+}
+.seta[aria-disabled="true"] { opacity: 0.45; cursor: default; }
+
+/* ================= Instruções ================= */
+.instrucoes h2 {
+  margin: 1.5rem 0 0.25rem;
+  color: var(--amarelo);
+  font-size: 1.35rem;
+}
+
+.boas-vindas {
+  font-size: 1.55rem;
+  font-weight: 800;
+  line-height: 1.3;
+  margin: 0.3rem 0 1rem;
+}
+
+.instrucoes p { font-size: 1.08rem; font-weight: 600; }
+
+.comandos {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.35rem 1rem;
+  margin: 0.8rem 0;
+  font-weight: 600;
+}
+.comandos dd { margin: 0; }
+
+.exemplo p {
+  margin: 0.5rem 0;
+  padding: 0.4rem 0.9rem;
+  border-left: 4px solid var(--amarelo);
+  background: rgba(0, 0, 0, 0.12);
+  border-radius: 0 8px 8px 0;
+}
+
+.desafio { color: var(--amarelo); }
+
+/* ================= Editor de código ================= */
+.editor {
+  display: flex;
+  margin-top: 1.5rem;
+  background: var(--branco);
+  border-radius: 10px;
+  overflow: hidden;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.15rem;
+  --altura-linha: 2.1rem;
+}
+
+.numeros {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 0.4rem;
+  min-width: 2.6rem;
+  background: var(--cinza);
+  color: #e6e6e6;
+  font-family: Consolas, monospace;
+  text-align: right;
+}
+.numeros span { line-height: var(--altura-linha); }
+
+.linhas {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 1rem 1rem;
+  color: #555;
+}
+
+.fixo {
+  margin: 0;
+  line-height: var(--altura-linha);
+}
+
+.editor textarea {
+  width: 100%;
+  border: none;
+  outline: none;
+  resize: none;
+  padding: 0;
+  font: inherit;
+  line-height: var(--altura-linha);
+  color: #222;
+  background:
+    repeating-linear-gradient(to bottom, transparent 0 calc(var(--altura-linha) - 1px), #f1f1f1 calc(var(--altura-linha) - 1px) var(--altura-linha));
+}
+.editor textarea::placeholder { color: #bbb; }
+
+#resultado { color: #2f8a35; font-weight: 600; }
+#resultado.erro { color: var(--erro); }
+
+.editor button {
+  align-self: flex-end;
+  margin-top: 0.5rem;
+  padding: 0.35rem 0.9rem;
+  border: none;
+  border-radius: 12px;
+  background: var(--azul-botao);
+  color: var(--amarelo);
+  font-family: "Baloo 2", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: transform 0.15s, background 0.2s;
+}
+.editor button:hover { transform: translateY(-2px); }
+.editor.ok button { background: var(--grama-escura); }
+
+/* ================= Cena: lago e capivaras ================= */
+.cena {
+  flex: 1;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem 1.5rem 3%;
+}
+
+figcaption {
+  align-self: center;
+  padding: 0.4rem 1rem;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.bando {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Capivara em blocos: corpo + cabeça + focinho + orelhas + patas */
+.capivara {
+  position: relative;
+  width: 92px;
+  height: 64px;
+  margin-right: 34px;  /* espaço para a cabeça */
+  margin-bottom: 14px; /* espaço para as patas */
+  background: var(--capi);
+  border-radius: 6px 0 4px 4px;
+  display: grid;
+  place-items: center;
+  color: var(--branco);
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.4rem;
+  animation: entrar 0.35s ease-out;
+}
+.capivara .cabeca {
+  position: absolute;
+  top: -16px;
+  right: -36px;
+  width: 50px;
+  height: 36px;
+  background: var(--capi);
+  border-radius: 8px 4px 4px 4px;
+}
+.capivara .cabeca::before {          /* focinho */
+  content: "";
+  position: absolute;
+  right: 0; top: 6px;
+  width: 14px; height: 26px;
+  background: var(--capi-escura);
+  border-radius: 0 4px 4px 0;
+}
+.capivara .cabeca::after {           /* orelhas */
+  content: "";
+  position: absolute;
+  top: -9px; left: 6px;
+  width: 10px; height: 12px;
+  background: var(--capi-escura);
+  border-radius: 3px 3px 0 0;
+  box-shadow: 14px 0 0 var(--capi-escura);
+}
+.capivara .olho {
+  position: absolute;
+  top: 9px; left: 18px;
+  width: 10px; height: 5px;
+  border: 2px solid #1e140b;
+  border-bottom: none;
+  border-radius: 10px 10px 0 0;
+}
+.capivara .patas::before,
+.capivara .patas::after {
+  content: "";
+  position: absolute;
+  bottom: -14px;
+  width: 12px; height: 14px;
+  background: var(--capi-escura);
+}
+.capivara .patas::before { left: 8px; box-shadow: 16px 0 0 var(--capi-escura); }
+.capivara .patas::after  { right: 8px; box-shadow: -16px 0 0 var(--capi-escura); }
+
+.capivara .indice {
+  position: absolute;
+  bottom: -38px;
+  left: 0; right: 0;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #e9ffe9;
+}
+
+.capivara.certa { outline: 3px solid var(--amarelo); outline-offset: 2px; }
+
+@keyframes entrar {
+  from { transform: translateY(-12px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+
+.cena.vitoria .capivara { animation: pular 0.5s ease-in-out infinite alternate; }
+.cena.vitoria .capivara:nth-child(2) { animation-delay: 0.1s; }
+.cena.vitoria .capivara:nth-child(3) { animation-delay: 0.2s; }
+.cena.vitoria .capivara:nth-child(4) { animation-delay: 0.3s; }
+.cena.vitoria .capivara:nth-child(5) { animation-delay: 0.4s; }
+
+@keyframes pular { to { transform: translateY(-14px); } }
+
+/* ================= Rodapé ================= */
+.rodape {
+  padding: 1rem 1.5rem;
+  background: var(--marrom-escuro);
+  text-align: center;
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.95rem;
+}
+.rodape p { margin: 0.2rem 0; }
+.rodape a { color: var(--amarelo); }
+
+/* ================= Telas menores ================= */
+@media (max-width: 1100px) {
+  .capivara { width: 60px; height: 44px; margin-right: 26px; font-size: 1.1rem; }
+  .capivara .cabeca { width: 36px; height: 28px; right: -26px; top: -12px; }
+  .capivara .cabeca::before { width: 10px; height: 20px; }
+  .capivara .olho { left: 10px; }
+}
+
+@media (max-width: 800px) {
+  .jogo { flex-direction: column; }
+  .painel { max-width: 100%; padding: 1.25rem 1rem; }
+  .logo { font-size: 2.4rem; }
+  .niveis { font-size: 1.1rem; gap: 1rem; }
+  .boas-vindas { font-size: 1.25rem; }
+  .comandos { grid-template-columns: 1fr; }
+  .lago { margin: 0; min-height: 380px; }
+  .capivara { width: 40px; height: 32px; margin-right: 20px; font-size: 0.95rem; }
+  .capivara .cabeca { width: 26px; height: 22px; right: -20px; top: -10px; }
+  .capivara .cabeca::before { width: 8px; height: 14px; }
+  .capivara .cabeca::after { width: 7px; height: 8px; top: -7px; box-shadow: 9px 0 0 var(--capi-escura); }
+  .capivara .olho { left: 6px; top: 6px; width: 7px; }
+  .capivara .patas::before, .capivara .patas::after { width: 8px; box-shadow: none; }
+}

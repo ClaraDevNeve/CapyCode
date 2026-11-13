@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CapyCode: aprenda comandos de Lista ajudando a Filó a organizar o bando de capivaras.">
+  <title>CapyCode – Nível 1</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=4R8i8dMW_2t_DGit9gSNtNP2jj8SpbSQpayyooUyLuFFcPGGT5iL6nbJBklgMsqPl2SJ2ANaVtXiGOK3ettfpmTvUjRtjJvR8fF-OtA8hhAl4IxOYWicgChpbBhzh2AKamb7-aTg5uXBNCr734HGUrn3cZkegkCt9_7l6ECGVCNmV4HIucFfdAHLBPyyndljzVNj4FWIMnu0iCclQAlG691oitMKqB4kumWfSopSibiwr5_QFArHceWW6EGNNRx-udo1VgBp4F75zy_QPQJdUw" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cHM6Ly9jZG4uZGlzY29yZGFwcC5jb20vYXR0YWNobWVudHMvMTU2MzAzNzMxNzM2OTk1ODUzMS8xNTY5NTM1NDM4OTI5MjcyOTAyL0NBUFlDT0RFLmh0bWw_ZXg9NmFmODZjODkmaXM9NmFmNzFiMDkmaG09NjRlYzY3ZmZlN2U5NWYxMWU5Y2Q1NTI4NDkwMGFhOTljMDE4MTQzNjJlOGE5ZDI0YjU1MmRhNGQ1NzZmZThkMyY"/></head>
+<body>
+
+  <main class="jogo">
+
+    <!-- ========== Lado esquerdo: instruções + editor ========== -->
+    <section class="painel" aria-labelledby="titulo-exercicio">
+
+      <header class="topo">
+        <h1 class="logo">CapyCode</h1>
+        <nav class="niveis" aria-label="Níveis">
+          <a href="#" class="seta" aria-label="Nível anterior" aria-disabled="true">&lt;</a>
+          <p>Nível <strong>1</strong> / 4</p>
+          <a href="#" class="seta" aria-label="Próximo nível" aria-disabled="true">&gt;</a>
+        </nav>
+      </header>
+
+      <article class="instrucoes">
+        <header>
+          <h2 id="titulo-exercicio">1° Exercício: Lista — "O bando bagunçado"</h2>
+        </header>
+
+        <p class="boas-vindas">
+          Bem-vindo ao CapyCode! Um jogo onde você deve ajudar a Filó e seus amigos com
+          seus problemas do dia a dia no bando. Ajude a organizar o bando de capivaras
+          escrevendo comandos de Lista.
+        </p>
+
+        <p>
+          Toda lista tem posições numeradas a partir de <code>0</code> (chamadas de
+          <dfn>índice</dfn>). Na lista <code>[10, 20, 30]</code>, o índice <code>0</code> é o
+          <code>10</code>, o índice <code>1</code> é o <code>20</code>, e assim por diante.
+          O <code>i</code> nos comandos abaixo é sempre esse número de posição:
+        </p>
+
+        <dl class="comandos">
+          <dt><code>insert(i, valor)</code></dt>
+          <dd>coloca um elemento na posição <code>i</code>.</dd>
+
+          <dt><code>pop(i)</code></dt>
+          <dd>remove o elemento que está na posição <code>i</code>.</dd>
+
+          <dt><code>remove(valor)</code></dt>
+          <dd>remove um elemento pelo seu valor, não pela posição.</dd>
+
+          <dt><code>append(valor)</code></dt>
+          <dd>adiciona um elemento no final da lista.</dd>
+        </dl>
+
+        <aside class="exemplo" aria-label="Exemplo">
+          <p>
+            <strong>Exemplo:</strong> <code>insert(0, 1)</code> coloca o valor <code>1</code>
+            na posição <code>0</code> (a primeira posição).
+          </p>
+        </aside>
+
+        <p class="desafio">
+          As capivaras estão em ordem errada: <code>1, 3, 2, 5, 4</code>.
+          Use os comandos acima para deixar o bando organizado: <code>1, 2, 3, 4, 5</code>.
+        </p>
+      </article>
+
+      <form class="editor" id="editor" aria-label="Editor de comandos">
+        <div class="numeros" aria-hidden="true">
+          <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+          <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+        <div class="linhas">
+          <label for="codigo" class="fixo">bando = [1, 3, 2, 5, 4]</label>
+          <textarea id="codigo" name="codigo" rows="7" spellcheck="false" autocomplete="off"
+            placeholder="Escreva um comando por linha, ex.: pop(1)"></textarea>
+          <p class="fixo">print(bando) <output id="resultado" for="codigo" aria-live="polite"># [1, 3, 2, 5, 4]</output></p>
+          <button type="submit" id="proximo">Próximo</button>
+        </div>
+      </form>
+
+    </section>
+
+    <!-- ========== Lado direito: lago + grama com as capivaras ========== -->
+    <section class="lago" aria-label="Lago das capivaras">
+      <h2 class="visualmente-oculto">Visualização do bando</h2>
+      <figure class="cena">
+        <figcaption id="legenda">A Filó está esperando o bando se organizar…</figcaption>
+        <ol class="bando" id="bando" aria-label="Ordem atual do bando"></ol>
+      </figure>
+    </section>
+
+  </main>
+
+  <footer class="rodape">
+    <p>
+      <strong>CapyCode</strong> foi criado pelos alunos:
+      <span class="autores">[Nossos nomes]</span> —
+      <span class="faculdade">[Nome da faculdade]</span>
+    </p>
+    <p>
+      Repositório no GitHub:
+      <a href="https://github.com/ClaraDevNeve/CapyCode" target="_blank" rel="noopener noreferrer">github.com/ClaraDevNeve/CapyCode</a>
+    </p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
