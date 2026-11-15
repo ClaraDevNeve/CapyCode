@@ -78,7 +78,7 @@ dfn { font-style: normal; color: var(--amarelo); }
   height: 100vh;
   height: 100dvh;
   /* imagem do cenário (água + grama na divisa em 79%), esticada no painel */
-  background: url("img/Background_lado_direito.png") center / 100% 100% no-repeat, var(--agua);
+  background: url("img/ex1.direito.png") center / 100% 100% no-repeat, var(--agua);
 }
 
 /* ================= Cabeçalho (título + nível) ================= */
