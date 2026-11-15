@@ -75,11 +75,8 @@ dfn { font-style: normal; color: var(--amarelo); }
   align-self: flex-start;
   height: 100vh;
   height: 100dvh;
-  /* ondas desenhadas com SVG + grama na parte de baixo */
-  background:
-    linear-gradient(to bottom, transparent 79%, var(--grama) 79%),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='28'%3E%3Cpath d='M0 14 Q15 6 30 14 T60 14 T90 14 T120 14' fill='none' stroke='%234a8fd0' stroke-width='2'/%3E%3C/svg%3E"),
-    var(--agua);
+  /* imagem do cenário (água + grama na divisa em 79%), esticada no painel */
+  background: url("img/Background_lado_direito.png") center / 100% 100% no-repeat, var(--agua);
 }
 
 /* ================= Cabeçalho (título + nível) ================= */
