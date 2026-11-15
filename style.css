@@ -52,9 +52,16 @@ dfn { font-style: normal; color: var(--amarelo); }
   display: flex;
 }
 
-.painel {
+.coluna-esquerda {
   flex: 0 0 51%;
   max-width: 51%;
+  display: flex;
+  flex-direction: column;
+}
+
+.painel {
+  flex: 1;
+  max-width: none;
   padding: 2rem 3.5rem 2.5rem 4rem;
 }
 
@@ -335,7 +342,7 @@ figcaption {
 /* ================= Rodapé ================= */
 .rodape {
   padding: 1rem 1.5rem;
-  background: var(--marrom-escuro);
+  background: var(--marrom); /* mesma cor do fundo do body */
   text-align: center;
   font-family: "Open Sans", sans-serif;
   font-size: 0.95rem;
@@ -353,7 +360,8 @@ figcaption {
 
 @media (max-width: 800px) {
   .jogo { flex-direction: column; }
-  .painel { max-width: 100%; padding: 1.25rem 1rem; }
+  .coluna-esquerda { max-width: 100%; }
+  .painel { padding: 1.25rem 1rem; }
   .logo { font-size: 2.4rem; }
   .niveis { font-size: 1.1rem; gap: 1rem; }
   .boas-vindas { font-size: 1.25rem; }
