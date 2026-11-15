@@ -43,35 +43,44 @@
 
           <p>
             Toda lista tem posições numeradas a partir de <code>0</code> (chamadas de
-            <dfn>índice</dfn>). Na lista <code>[10, 20, 30]</code>, o índice <code>0</code> é o
-            <code>10</code>, o índice <code>1</code> é o <code>20</code>, e assim por diante.
-            O <code>i</code> nos comandos abaixo é sempre esse número de posição:
+            <dfn>índice</dfn>). Na lista <code>["Filó", "Cacau", "Lolo"]</code>, o índice
+            <code>0</code> é <code>"Filó"</code>, o índice <code>1</code> é <code>"Cacau"</code>,
+            e assim por diante. O <code>i</code> nos comandos abaixo é sempre esse número de
+            posição:
           </p>
 
           <dl class="comandos">
-            <dt><code>insert(i, valor)</code></dt>
+            <dt><code>insert(i, "valor")</code></dt>
             <dd>coloca um elemento na posição <code>i</code>.</dd>
 
             <dt><code>pop(i)</code></dt>
             <dd>remove o elemento que está na posição <code>i</code>.</dd>
 
-            <dt><code>remove(valor)</code></dt>
+            <dt><code>remove("valor")</code></dt>
             <dd>remove um elemento pelo seu valor, não pela posição.</dd>
 
-            <dt><code>append(valor)</code></dt>
+            <dt><code>append("valor")</code></dt>
             <dd>adiciona um elemento no final da lista.</dd>
           </dl>
 
+          <p class="lembrete">
+            <strong>Lembrete:</strong> nomes são <dfn>strings</dfn> (texto) e sempre vão entre
+            aspas duplas: <code>"Filó"</code>, <code>"Cacau"</code>… Por isso, escreva
+            <code>remove("Lolo")</code>, e não <code>remove(Lolo)</code>.
+          </p>
+
           <aside class="exemplo" aria-label="Exemplo">
             <p>
-              <strong>Exemplo:</strong> <code>insert(0, 1)</code> coloca o valor <code>1</code>
-              na posição <code>0</code> (a primeira posição).
+              <strong>Exemplo:</strong> <code>insert(0, "Rex")</code> coloca
+              <code>"Rex"</code> na posição <code>0</code> (a primeira posição).
             </p>
           </aside>
 
           <p class="desafio">
-            As capivaras estão em ordem errada: <code>1, 3, 2, 5, 4</code>.
-            Use os comandos acima para deixar o bando organizado: <code>1, 2, 3, 4, 5</code>.
+            As capivaras estão em ordem errada:
+            <code>"Filó", "Lolo", "Cacau", "Rex", "Nina"</code>.
+            Use os comandos acima para deixar o bando organizado nesta ordem:
+            <code>"Filó", "Cacau", "Lolo", "Nina", "Rex"</code>.
           </p>
         </article>
 
@@ -81,10 +90,10 @@
             <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
           </div>
           <div class="linhas">
-            <label for="codigo" class="fixo">bando = [1, 3, 2, 5, 4]</label>
+            <label for="codigo" class="fixo">bando = ["Filó", "Lolo", "Cacau", "Rex", "Nina"]</label>
             <textarea id="codigo" name="codigo" rows="7" spellcheck="false" autocomplete="off"
-              placeholder="Escreva um comando por linha, ex.: pop(1)"></textarea>
-            <p class="fixo">print(bando) <output id="resultado" for="codigo" aria-live="polite"># [1, 3, 2, 5, 4]</output></p>
+              placeholder="Escreva um comando por linha, ex.: remove(&quot;Lolo&quot;)"></textarea>
+            <p class="fixo">print(bando) <output id="resultado" for="codigo" aria-live="polite"># ["Filó", "Lolo", "Cacau", "Rex", "Nina"]</output></p>
             <button type="submit" id="proximo">Próximo</button>
           </div>
         </form>
