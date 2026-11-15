@@ -265,77 +265,66 @@ figcaption {
   list-style: none;
 }
 
-/* Capivara em blocos: corpo + cabeça + focinho + orelhas + patas */
+/* Capivara em PNG: avatar + valor + índice */
 .capivara {
   position: relative;
-  width: 92px;
-  height: 64px;
-  margin-right: 34px;  /* espaço para a cabeça */
-  margin-bottom: 14px; /* espaço para as patas */
-  background: var(--capi);
-  border-radius: 6px 0 4px 4px;
-  display: grid;
-  place-items: center;
-  color: var(--branco);
-  font-family: "Open Sans", sans-serif;
-  font-size: 1.4rem;
+  width: 118px;
+  aspect-ratio: 1077 / 907; /* área útil do PNG, sem o padding transparente */
+  margin-bottom: 1.7rem;    /* espaço para o índice abaixo */
   animation: entrar 0.35s ease-out;
 }
-.capivara .cabeca {
+
+/* A imagem original é quadrada e tem padding transparente.
+   O zoom + deslocamento abaixo enquadra só a capivara dentro do avatar. */
+.capivara .avatar {
   position: absolute;
-  top: -16px;
-  right: -36px;
-  width: 50px;
-  height: 36px;
-  background: var(--capi);
-  border-radius: 8px 4px 4px 4px;
+  inset: 0;
+  overflow: hidden;
+  transition: transform 0.2s ease, filter 0.2s ease;
 }
-.capivara .cabeca::before {          /* focinho */
-  content: "";
+.capivara .avatar img {
   position: absolute;
-  right: 0; top: 6px;
-  width: 14px; height: 26px;
-  background: var(--capi-escura);
-  border-radius: 0 4px 4px 0;
+  width: 116.43%;   /* 1254 / 1077 */
+  height: auto;
+  left: -12.81%;    /* 138 / 1077 */
+  top: -24.14%;     /* (219 / 1254) / (907 / 1077) */
+  display: block;
+  user-select: none;
+  pointer-events: none;
 }
-.capivara .cabeca::after {           /* orelhas */
-  content: "";
+
+.capivara .valor {
   position: absolute;
-  top: -9px; left: 6px;
-  width: 10px; height: 12px;
-  background: var(--capi-escura);
-  border-radius: 3px 3px 0 0;
-  box-shadow: 14px 0 0 var(--capi-escura);
+  top: 18%; /* sobre o dorso, pois o topo da imagem original é transparente */
+  left: 4px;
+  z-index: 1;
+  min-width: 1.7em;
+  padding: 0 0.4em;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.55);
+  color: var(--branco);
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  text-align: center;
 }
-.capivara .olho {
-  position: absolute;
-  top: 9px; left: 18px;
-  width: 10px; height: 5px;
-  border: 2px solid #1e140b;
-  border-bottom: none;
-  border-radius: 10px 10px 0 0;
-}
-.capivara .patas::before,
-.capivara .patas::after {
-  content: "";
-  position: absolute;
-  bottom: -14px;
-  width: 12px; height: 14px;
-  background: var(--capi-escura);
-}
-.capivara .patas::before { left: 8px; box-shadow: 16px 0 0 var(--capi-escura); }
-.capivara .patas::after  { right: 8px; box-shadow: -16px 0 0 var(--capi-escura); }
 
 .capivara .indice {
   position: absolute;
-  bottom: -38px;
+  bottom: -1.5rem;
   left: 0; right: 0;
   text-align: center;
   font-size: 0.9rem;
   color: #e9ffe9;
 }
 
-.capivara.certa { outline: 3px solid var(--amarelo); outline-offset: 2px; }
+.capivara.certa .avatar {
+  filter:
+    drop-shadow(0 0 3px var(--amarelo))
+    drop-shadow(0 0 8px var(--amarelo))
+    drop-shadow(0 0 16px rgba(247, 212, 69, 0.85));
+  transform: scale(1.06);
+}
 
 @keyframes entrar {
   from { transform: translateY(-12px); opacity: 0; }
@@ -363,10 +352,8 @@ figcaption {
 
 /* ================= Telas menores ================= */
 @media (max-width: 1100px) {
-  .capivara { width: 60px; height: 44px; margin-right: 26px; font-size: 1.1rem; }
-  .capivara .cabeca { width: 36px; height: 28px; right: -26px; top: -12px; }
-  .capivara .cabeca::before { width: 10px; height: 20px; }
-  .capivara .olho { left: 10px; }
+  .capivara { width: 88px; }
+  .capivara .valor { font-size: 0.85rem; }
 }
 
 @media (max-width: 800px) {
@@ -383,10 +370,7 @@ figcaption {
     margin: 0;
     min-height: 380px;
   }
-  .capivara { width: 40px; height: 32px; margin-right: 20px; font-size: 0.95rem; }
-  .capivara .cabeca { width: 26px; height: 22px; right: -20px; top: -10px; }
-  .capivara .cabeca::before { width: 8px; height: 14px; }
-  .capivara .cabeca::after { width: 7px; height: 8px; top: -7px; box-shadow: 9px 0 0 var(--capi-escura); }
-  .capivara .olho { left: 6px; top: 6px; width: 7px; }
-  .capivara .patas::before, .capivara .patas::after { width: 8px; box-shadow: none; }
+  .capivara { width: 58px; margin-bottom: 1.4rem; }
+  .capivara .valor { font-size: 0.75rem; left: 2px; }
+  .capivara .indice { font-size: 0.8rem; bottom: -1.3rem; }
 }

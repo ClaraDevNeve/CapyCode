@@ -56,8 +56,7 @@ function desenhar(lista) {
     const li = document.createElement("li");
     li.className = "capivara" + (OBJETIVO[i] === valor ? " certa" : "");
     li.innerHTML =
-      `<span class="cabeca"><span class="olho"></span></span>` +
-      `<span class="patas"></span>` +
+      `<span class="avatar"><img src="img/capycode.png" alt="" draggable="false"></span>` +
       `<span class="valor">${valor}</span>` +
       `<span class="indice">[${i}]</span>`;
     li.setAttribute("aria-label", `Capivara ${valor} na posição ${i}`);
