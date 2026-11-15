@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 /* ================= Cores e base ================= */
 :root {
   --marrom: #7a4520;
@@ -91,7 +93,7 @@ dfn { font-style: normal; color: var(--amarelo); }
 .logo {
   margin: 0;
   color: var(--amarelo);
-  font-size: 28px;
+  font-size: 40px;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -166,7 +168,7 @@ dfn { font-style: normal; color: var(--amarelo); }
   display: flex;
   margin-top: 1.5rem;
   background: var(--branco);
-  border-radius: 10px;
+  border-radius: 5px;
   overflow: hidden;
   font-family: "Open Sans", sans-serif;
   font-size: 1rem;
@@ -342,14 +344,41 @@ figcaption {
 
 /* ================= Rodapé ================= */
 .rodape {
-  padding: 1rem 1.5rem;
+  padding: 1rem 3.5rem 1rem 4rem; /* mesmas margens do conteúdo do painel */
   background: var(--marrom); /* mesma cor do fundo do body */
   text-align: center;
-  font-family: "Open Sans", sans-serif;
-  font-size: 0.95rem;
+  font-family: "PT sans","Open Sans", sans-serif;
+  font-size: 13px;
 }
 .rodape p { margin: 0.2rem 0; }
 .rodape a { color: var(--amarelo); }
+
+/* Nomes dos integrantes: sublinhado animado no hover e no foco por teclado */
+.rodape .integrante {
+  color: inherit; /* mantém o branco do rodapé */
+  text-decoration: none;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 1px;
+  transition: background-size 0.2s ease;
+}
+.rodape .integrante:hover,
+.rodape .integrante:focus-visible {
+  background-size: 100% 1px;
+}
+
+/* Link do repositório: ícone + palavra alinhados na mesma linha do sublinhado */
+.rodape .integrante.github {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.rodape .icone-github {
+  width: 1.15em; /* ~15px com o rodapé em 13px */
+  height: 1.15em;
+  filter: brightness(0) invert(1); /* preto -> branco: 7,78:1 no marrom */
+}
 
 /* ================= Telas menores ================= */
 /* Notebooks: o painel direito fica estreito, então a cena usa um padding menor
@@ -363,6 +392,7 @@ figcaption {
   .jogo { flex-direction: column; }
   .coluna-esquerda { max-width: 100%; }
   .painel { padding: 1.25rem 1rem; }
+  .rodape { padding: 1rem; }
   .logo { font-size: 2.4rem; }
   .niveis { font-size: 1.1rem; gap: 1rem; }
   .boas-vindas { font-size: 1.25rem; }
