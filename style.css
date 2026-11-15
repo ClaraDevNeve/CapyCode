@@ -69,6 +69,11 @@ dfn { font-style: normal; color: var(--amarelo); }
   flex: 1;
   display: flex;
   margin-right: 2.2rem; /* faixa marrom à direita, como no protótipo */
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+  height: 100vh;
+  height: 100dvh;
   /* ondas desenhadas com SVG + grama na parte de baixo */
   background:
     linear-gradient(to bottom, transparent 79%, var(--grama) 79%),
@@ -238,7 +243,7 @@ dfn { font-style: normal; color: var(--amarelo); }
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 2rem 1.5rem 3%;
+  padding: 2rem 1.5rem 2.5rem;
 }
 
 figcaption {
@@ -372,7 +377,12 @@ figcaption {
   .niveis { font-size: 1.1rem; gap: 1rem; }
   .boas-vindas { font-size: 1.25rem; }
   .comandos { grid-template-columns: 1fr; }
-  .lago { margin: 0; min-height: 380px; }
+  .lago {
+    position: static;
+    height: auto;
+    margin: 0;
+    min-height: 380px;
+  }
   .capivara { width: 40px; height: 32px; margin-right: 20px; font-size: 0.95rem; }
   .capivara .cabeca { width: 26px; height: 22px; right: -20px; top: -10px; }
   .capivara .cabeca::before { width: 8px; height: 14px; }
