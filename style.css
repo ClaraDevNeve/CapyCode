@@ -81,6 +81,11 @@ dfn { font-style: normal; color: var(--amarelo); }
   background: url("img/ex1.direito.png") center / 100% 100% no-repeat, var(--agua);
 }
 
+/* Segundo exercício: cenário próprio, mantendo o mesmo enquadramento */
+.lago.ex2 {
+  background-image: url("img/ex2.direito.png");
+}
+
 /* ================= Cabeçalho (título + nível) ================= */
 .topo {
   display: flex;
