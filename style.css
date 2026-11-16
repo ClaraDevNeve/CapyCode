@@ -326,6 +326,78 @@ figcaption {
   color: #e9ffe9;
 }
 
+/* ================= Exercício 2: três pilhas de frutas ================= */
+.ex2 .estacoes {
+  align-items: flex-end;
+}
+
+.ex2 .estacao {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 118px;
+}
+
+.ex2 .estacao .capivara {
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.ex2 .pilha {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  width: 60%;
+  margin-bottom: -2px;
+  pointer-events: none;
+}
+
+.ex2 .pilha .fruta {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.25));
+}
+
+.ex2 .pilha .fruta:not(:first-child) {
+  margin-bottom: -6%;
+}
+
+.ex2 .pilha.vazia {
+  aspect-ratio: 1 / 2.87; /* altura aproximada de três frutas empilhadas */
+  justify-content: center;
+  border: 2px dashed rgba(255, 255, 255, 0.6);
+  border-radius: 12px;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.ex2 .rotulo {
+  margin: 0.35rem 0 0;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.28);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.ex2 .modelo .rotulo {
+  color: var(--amarelo);
+}
+
+.ex2 .modelo .avatar,
+.ex2 .modelo .pilha {
+  filter:
+    drop-shadow(0 0 3px var(--amarelo))
+    drop-shadow(0 0 8px var(--amarelo))
+    drop-shadow(0 0 16px rgba(247, 212, 69, 0.85));
+}
+
 .capivara.certa .avatar {
   filter:
     drop-shadow(0 0 3px var(--amarelo))
@@ -411,4 +483,7 @@ figcaption {
   .capivara { width: 58px; margin-bottom: 1.4rem; }
   .capivara .valor { font-size: 0.75rem; left: 2px; }
   .capivara .indice { font-size: 0.8rem; bottom: -1.3rem; }
+  .ex2 .estacao { width: 58px; }
+  .ex2 .rotulo { font-size: 0.7rem; padding: 0.1rem 0.4rem; }
+  .ex2 .pilha.vazia { font-size: 0.6rem; border-radius: 8px; }
 }

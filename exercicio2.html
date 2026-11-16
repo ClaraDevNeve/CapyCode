@@ -122,12 +122,47 @@
 
     </div>
 
-    <!-- ========== Lado direito: lago + grama com as capivaras ========== -->
+    <!-- ========== Lado direito: lago + grama com as três pilhas de frutas ========== -->
     <section class="lago ex2" aria-label="Lago das capivaras">
-      <h2 class="visualmente-oculto">Visualização do bando</h2>
+      <h2 class="visualmente-oculto">Visualização das pilhas de frutas</h2>
       <figure class="cena">
-        <figcaption id="legenda">A Filó está esperando o bando se organizar…</figcaption>
-        <ol class="bando" id="bando" aria-label="Ordem atual do bando"></ol>
+        <figcaption id="legenda">A Filó está esperando a torre de frutas ficar pronta…</figcaption>
+
+        <ol class="bando estacoes" id="estruturas" aria-label="Pilhas de frutas">
+          <li class="estacao modelo">
+            <div class="pilha" role="img" aria-label="Torre modelo: maçã na base, laranja no meio e uva no topo">
+              <img class="fruta" src="img/maca_transparente.png" alt="">
+              <img class="fruta" src="img/laranja_transparente.png" alt="">
+              <img class="fruta" src="img/uva_transparente.png" alt="">
+            </div>
+            <div class="capivara">
+              <span class="avatar"><img src="img/capycode.png" alt="" draggable="false"></span>
+            </div>
+            <p class="rotulo">Torre modelo</p>
+          </li>
+
+          <li class="estacao auxiliar">
+            <div class="pilha vazia" role="img" aria-label="Pilha auxiliar vazia">
+              <span aria-hidden="true">vazia</span>
+            </div>
+            <div class="capivara">
+              <span class="avatar"><img src="img/capycode.png" alt="" draggable="false"></span>
+            </div>
+            <p class="rotulo">Pilha auxiliar</p>
+          </li>
+
+          <li class="estacao recebida">
+            <div class="pilha" role="img" aria-label="Pilha recebida: uva na base, maçã no meio e laranja no topo">
+              <img class="fruta" src="img/uva_transparente.png" alt="">
+              <img class="fruta" src="img/maca_transparente.png" alt="">
+              <img class="fruta" src="img/laranja_transparente.png" alt="">
+            </div>
+            <div class="capivara">
+              <span class="avatar"><img src="img/capycode.png" alt="" draggable="false"></span>
+            </div>
+            <p class="rotulo">Pilha recebida</p>
+          </li>
+        </ol>
       </figure>
     </section>
 
