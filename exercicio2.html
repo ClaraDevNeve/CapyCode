@@ -21,14 +21,8 @@
 
       <section class="painel" aria-labelledby="titulo-exercicio">
 
-        <header class="topo">
-          <h1 class="logo">CapyCode</h1>
-          <nav class="niveis" aria-label="Níveis">
-            <a href="CAPYCODE.html" class="seta" aria-label="Nível anterior">&lt;</a>
-            <p>Nível <strong>2</strong> / 4</p>
-            <a href="#" class="seta" aria-label="Próximo nível" aria-disabled="true">&gt;</a>
-          </nav>
-        </header>
+        <!-- Cabeçalho (logo + nível) montado por componentes.js -->
+        <header class="topo" data-nivel="2"></header>
 
         <article class="instrucoes">
           <header>
@@ -103,22 +97,8 @@
 
       </section>
 
-      <!-- TODO: trocar os href="#" pelos links dos perfis do GitHub de cada integrante -->
-      <footer class="rodape">
-        <p>
-          <strong>CapyCode</strong> foi criado por:
-          <span class="autores"><a class="integrante" href="https://github.com/ClaraDevNeve" target="_blank" rel="noopener noreferrer">Maria Clara</a>,</span>
-          <span class="autores"><a class="integrante" href="https://github.com/JORD4N-01" target="_blank" rel="noopener noreferrer">Jordan Cunha</a> e </span>
-          <span class="autores"><a class="integrante" href="https://github.com/yLucasVale" target="_blank" rel="noopener noreferrer">Lucas Albuquerque</a></span>
-        </p>
-        <p>
-          <a class="integrante github" href="https://github.com/ClaraDevNeve/CapyCode" target="_blank" rel="noopener noreferrer"
-            aria-label="Repositório do CapyCode no GitHub">
-            <img class="icone-github" src="img/icone-github.png" alt="" aria-hidden="true" width="20" height="20">
-            GitHub
-          </a>
-        </p>
-      </footer>
+      <!-- Rodapé montado por componentes.js -->
+      <footer class="rodape"></footer>
 
     </div>
 
@@ -168,5 +148,6 @@
 
   </main>
 
+  <script src="componentes.js"></script>
 </body>
 </html>

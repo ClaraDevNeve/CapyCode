@@ -430,8 +430,9 @@ figcaption {
 .rodape p { margin: 0.2rem 0; }
 .rodape a { color: var(--amarelo); }
 
-/* Nomes dos integrantes: sublinhado animado no hover e no foco por teclado */
-.rodape .integrante {
+/* Nomes dos integrantes e links de referência: sublinhado animado no hover e no foco por teclado */
+.rodape .integrante,
+.rodape .link-animado {
   color: inherit; /* mantém o branco do rodapé */
   text-decoration: none;
   background-image: linear-gradient(currentColor, currentColor);
@@ -441,8 +442,16 @@ figcaption {
   transition: background-size 0.2s ease;
 }
 .rodape .integrante:hover,
-.rodape .integrante:focus-visible {
+.rodape .integrante:focus-visible,
+.rodape .link-animado:hover,
+.rodape .link-animado:focus-visible {
   background-size: 100% 1px;
+}
+
+/* Separador entre o link do site e o do repositório */
+.rodape .separador {
+  margin: 0 0.35rem;
+  opacity: 0.6;
 }
 
 /* Link do repositório: ícone + palavra alinhados na mesma linha do sublinhado */
