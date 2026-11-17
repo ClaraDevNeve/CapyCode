@@ -35,9 +35,10 @@
           </p>
 
           <p>
-            Uma capivara recebeu uma pilha de frutas em uma ordem diferente da torre modelo.
-            Ajude-a a desconstruir a pilha e reconstruí-la na ordem correta utilizando
-            comandos de Pilha.
+            Uma capivara recebeu a pilha <code>frutas</code> em uma ordem diferente da torre
+            modelo. Para resolver, você tem duas pilhas à disposição: a pilha
+            <code>frutas</code>, que veio bagunçada, e a <code>auxiliar</code>, onde a Filó
+            trabalha.
           </p>
 
           <p>
@@ -73,11 +74,18 @@
           </aside>
 
           <p class="desafio">
-            As capivaras precisam reproduzir a torre modelo! A pilha recebida está na
-            seguinte ordem: <code>"uva", "maçã", "laranja"</code>. Já a torre modelo deve
-            ficar na ordem: <code>"maçã", "laranja", "uva"</code>. Utilize a pilha auxiliar
-            e os comandos acima para desconstruir a pilha recebida e reconstruir a torre
-            exatamente como a modelo.
+            As capivaras precisam reproduzir a torre modelo! A pilha <code>frutas</code> está
+            na seguinte ordem, da base para o topo:
+            <code>"uva", "laranja", "maçã"</code>. Já a torre modelo deve ficar na ordem:
+            <code>"maçã", "laranja", "uva"</code>. Leve todas as frutas para a pilha
+            <code>auxiliar</code> da Filó, que precisa terminar igual à torre modelo, e
+            deixe a pilha <code>frutas</code> vazia.
+          </p>
+
+          <p class="lembrete">
+            <strong>Dica:</strong> transferir uma pilha inteira para outra
+            <em>inverte</em> a ordem das frutas. Compare a pilha recebida com a torre modelo
+            e você vai perceber que não é preciso nenhum comando a mais do que isso.
           </p>
         </article>
 
@@ -87,11 +95,12 @@
             <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
           </div>
           <div class="linhas">
-            <label for="codigo" class="fixo">frutas = ["uva", "maçã", "laranja"]</label>
-            <textarea id="codigo" name="codigo" rows="7" spellcheck="false" autocomplete="off"
+            <label for="codigo" class="fixo">frutas = ["uva", "laranja", "maçã"]</label>
+            <p class="fixo">auxiliar = []</p>
+            <textarea id="codigo" name="codigo" rows="5" spellcheck="false" autocomplete="off"
               placeholder="Escreva um comando por linha, ex.: auxiliar.append(frutas.pop())"></textarea>
-            <p class="fixo">print(frutas) <output id="resultado" for="codigo" aria-live="polite"># ["uva", "maçã", "laranja"]</output></p>
-            <button type="button" id="proximo">Próximo</button>
+            <p class="fixo">print(auxiliar) <output id="resultado" for="codigo" aria-live="polite"># []</output></p>
+            <button type="submit" id="proximo">Próximo</button>
           </div>
         </form>
 
@@ -102,7 +111,7 @@
 
     </div>
 
-    <!-- ========== Lado direito: lago + grama com as três pilhas de frutas ========== -->
+    <!-- ========== Lado direito: lago + grama com as pilhas de frutas ========== -->
     <section class="lago ex2" aria-label="Lago das capivaras">
       <h2 class="visualmente-oculto">Visualização das pilhas de frutas</h2>
       <figure class="cena">
@@ -110,37 +119,31 @@
 
         <ol class="bando estacoes" id="estruturas" aria-label="Pilhas de frutas">
           <li class="estacao modelo">
-            <div class="pilha" role="img" aria-label="Torre modelo: maçã na base, laranja no meio e uva no topo">
+            <div class="pilha flutuante" role="img" aria-label="Torre modelo: maçã na base, laranja no meio e uva no topo">
               <img class="fruta" src="img/maca_transparente.png" alt="">
               <img class="fruta" src="img/laranja_transparente.png" alt="">
               <img class="fruta" src="img/uva_transparente.png" alt="">
             </div>
-            <div class="capivara">
-              <span class="avatar"><img src="img/capycode.png" alt="" draggable="false"></span>
-            </div>
             <p class="rotulo">Torre modelo</p>
           </li>
 
+          <li class="estacao frutas">
+            <div class="pilha" id="pilha-frutas" role="img" aria-label="Pilha frutas: base uva, topo maçã">
+              <img class="fruta" src="img/uva_transparente.png" alt="">
+              <img class="fruta" src="img/laranja_transparente.png" alt="">
+              <img class="fruta" src="img/maca_transparente.png" alt="">
+            </div>
+            <p class="rotulo">Frutas</p>
+          </li>
+
           <li class="estacao auxiliar">
-            <div class="pilha vazia" role="img" aria-label="Pilha auxiliar vazia">
+            <div class="pilha vazia" id="pilha-auxiliar" role="img" aria-label="Pilha auxiliar vazia">
               <span aria-hidden="true">vazia</span>
             </div>
             <div class="capivara">
               <span class="avatar"><img src="img/capycode.png" alt="" draggable="false"></span>
             </div>
-            <p class="rotulo">Pilha auxiliar</p>
-          </li>
-
-          <li class="estacao recebida">
-            <div class="pilha" role="img" aria-label="Pilha recebida: uva na base, maçã no meio e laranja no topo">
-              <img class="fruta" src="img/uva_transparente.png" alt="">
-              <img class="fruta" src="img/maca_transparente.png" alt="">
-              <img class="fruta" src="img/laranja_transparente.png" alt="">
-            </div>
-            <div class="capivara">
-              <span class="avatar"><img src="img/capycode.png" alt="" draggable="false"></span>
-            </div>
-            <p class="rotulo">Pilha recebida</p>
+            <p class="rotulo">Filó</p>
           </li>
         </ol>
       </figure>
@@ -149,5 +152,6 @@
   </main>
 
   <script src="componentes.js"></script>
+  <script src="exercicio2.js"></script>
 </body>
 </html>

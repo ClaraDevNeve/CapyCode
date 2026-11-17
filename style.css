@@ -335,7 +335,10 @@ figcaption {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 118px;
+  /* Quatro estações dividem a largura da cena sem estourar em telas menores */
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: 118px;
 }
 
 .ex2 .estacao .capivara {
@@ -383,19 +386,33 @@ figcaption {
   font-size: 0.9rem;
   font-weight: 700;
   text-align: center;
-  white-space: nowrap;
+  max-width: 100%;
+  white-space: normal;
 }
 
 .ex2 .modelo .rotulo {
   color: var(--amarelo);
 }
 
-.ex2 .modelo .avatar,
+/* A torre modelo flutua no ar, sem capivara embaixo */
+.ex2 .modelo {
+  align-self: center;
+}
+
 .ex2 .modelo .pilha {
   filter:
     drop-shadow(0 0 3px var(--amarelo))
     drop-shadow(0 0 8px var(--amarelo))
     drop-shadow(0 0 16px rgba(247, 212, 69, 0.85));
+}
+
+.ex2 .pilha.flutuante {
+  animation: flutuar 3.2s ease-in-out infinite;
+}
+
+@keyframes flutuar {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
 }
 
 .capivara.certa .avatar {
@@ -472,6 +489,7 @@ figcaption {
 @media (min-width: 801px) and (max-width: 1500px) {
   .cena { padding-left: 0.75rem; padding-right: 0.75rem; }
   .bando { gap: 0.5rem; }
+  .ex2 .rotulo { font-size: 0.8rem; }
 }
 
 @media (max-width: 800px) {
@@ -498,7 +516,14 @@ figcaption {
   .capivara { width: clamp(44px, 16vw, 58px); margin-bottom: 1.4rem; }
   .capivara .valor { font-size: 0.75rem; left: 2px; }
   .capivara .indice { font-size: 0.8rem; bottom: -1.3rem; }
-  .ex2 .estacao { width: 58px; }
+  .ex2 .estacao { width: 58px; flex: 0 0 auto; }
   .ex2 .rotulo { font-size: 0.7rem; padding: 0.1rem 0.4rem; }
   .ex2 .pilha.vazia { font-size: 0.6rem; border-radius: 8px; }
+}
+
+/* Quem prefere menos movimento fica sem as animações decorativas.
+   Fica no fim do arquivo para vencer as declarações de animação acima. */
+@media (prefers-reduced-motion: reduce) {
+  .ex2 .pilha.flutuante,
+  .cena.vitoria .capivara { animation: none; }
 }
