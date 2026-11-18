@@ -481,7 +481,7 @@ figcaption {
   background-size: 100% 1px;
 }
 
-/* Separador entre o link do site e o do repositório */
+/* Separador entre o crédito e o repositório original */
 .rodape .separador {
   margin: 0 0.35rem;
   opacity: 0.6;

@@ -1,10 +1,10 @@
 // CapyCode – Exercício 2: "A uva escondida"
-// Três pilhas: frutas (do Cacau), prato (espera) e Filó (a da capivara).
+// Três pilhas: cacau (a pilha do Cacau), prato (espera) e Filó (a da capivara).
 // Em todos os arrays, o índice 0 é a base e o último item é o topo.
 
 const INICIAL = ["laranja", "uva", "maçã"];
 const FILO_ESPERADO = ["uva"];
-const FRUTAS_ESPERADAS = ["laranja", "maçã"];
+const CACAU_ESPERADO = ["laranja", "maçã"];
 
 const SPRITE = {
   "maçã": "img/maca_transparente.png",
@@ -12,10 +12,10 @@ const SPRITE = {
   "uva": "img/uva_transparente.png",
 };
 
-const PILHAS = ["frutas", "prato", "Filó"];
+const PILHAS = ["cacau", "prato", "Filó"];
 
 const NOMES_AMIGAVEIS = {
-  frutas: "Pilha do Cacau",
+  cacau: "Pilha do Cacau",
   prato: "Prato de espera",
   "Filó": "Pilha da Filó",
 };
@@ -27,7 +27,7 @@ const legenda = document.getElementById("legenda");
 const cena = document.querySelector(".cena");
 
 const elementos = {
-  frutas: document.getElementById("pilha-frutas"),
+  cacau: document.getElementById("pilha-cacau"),
   prato: document.getElementById("pilha-prato"),
   "Filó": document.getElementById("pilha-filo"),
 };
@@ -66,13 +66,13 @@ function desenhar(pilhas) {
   for (const nome of PILHAS) desenharPilha(nome, pilhas[nome]);
 }
 
-// Aceita só movimentos entre pilhas: Filó.append(frutas.pop())
-const MOVER = /^(frutas|prato|Filó)\.append\(\s*(frutas|prato|Filó)\.pop\(\s*\)\s*\)\s*;?$/;
-const APPEND_LITERAL = /^(frutas|prato|Filó)\.append\s*\(/;
-const POP_SOLTO = /^(frutas|prato|Filó)\.pop\s*\(\s*\)\s*;?$/;
+// Aceita só movimentos entre pilhas: Filó.append(cacau.pop())
+const MOVER = /^(cacau|prato|Filó)\.append\(\s*(cacau|prato|Filó)\.pop\(\s*\)\s*\)\s*;?$/;
+const APPEND_LITERAL = /^(cacau|prato|Filó)\.append\s*\(/;
+const POP_SOLTO = /^(cacau|prato|Filó)\.pop\s*\(\s*\)\s*;?$/;
 
 function executar(texto) {
-  const pilhas = { frutas: [...INICIAL], prato: [], "Filó": [] };
+  const pilhas = { cacau: [...INICIAL], prato: [], "Filó": [] };
   const linhas = texto.split("\n").map(l => l.trim()).filter(Boolean);
 
   for (const linha of linhas) {
@@ -81,11 +81,11 @@ function executar(texto) {
     if (!m) {
       if (APPEND_LITERAL.test(linha)) {
         throw new Error(
-          "Neste nível as frutas só se movem entre pilhas: use Filó.append(frutas.pop())."
+          "Neste nível as frutas só se movem entre pilhas: use Filó.append(cacau.pop())."
         );
       }
       if (POP_SOLTO.test(linha)) {
-        throw new Error("Use pop() dentro de um append: Filó.append(frutas.pop()).");
+        throw new Error("Use pop() dentro de um append: Filó.append(cacau.pop()).");
       }
       throw new Error(`Comando não reconhecido: ${linha}`);
     }
@@ -105,8 +105,8 @@ function executar(texto) {
 
 function venceu(pilhas) {
   return (
-    pilhas.frutas.length === FRUTAS_ESPERADAS.length &&
-    pilhas.frutas.every((fruta, i) => fruta === FRUTAS_ESPERADAS[i]) &&
+    pilhas.cacau.length === CACAU_ESPERADO.length &&
+    pilhas.cacau.every((fruta, i) => fruta === CACAU_ESPERADO[i]) &&
     pilhas.prato.length === 0 &&
     pilhas["Filó"].length === FILO_ESPERADO.length &&
     pilhas["Filó"].every((fruta, i) => fruta === FILO_ESPERADO[i])
@@ -143,8 +143,8 @@ editor.addEventListener("submit", (ev) => {
     editor.classList.add("ok");
     cena.classList.add("vitoria");
   } else {
-    legenda.textContent = "Ainda não… entregue a uva à Filó e devolva a maçã ao Cacau.";
+    legenda.textContent = "Ainda não… entregue a uva à Filó e devolva a maçã e a laranja ao Cacau.";
   }
 });
 
-desenhar({ frutas: [...INICIAL], prato: [], "Filó": [] });
+desenhar({ cacau: [...INICIAL], prato: [], "Filó": [] });

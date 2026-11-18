@@ -38,8 +38,8 @@
           </p>
 
           <dl class="comandos">
-            <dt><code>frutas.pop()</code></dt>
-            <dd>tira a fruta do topo de <code>frutas</code>.</dd>
+            <dt><code>cacau.pop()</code></dt>
+            <dd>tira a fruta do topo de <code>cacau</code>.</dd>
 
             <dt><code>Filó.append(...)</code></dt>
             <dd>coloca uma fruta no topo de <code>Filó</code>.</dd>
@@ -47,14 +47,14 @@
 
           <aside class="exemplo" aria-label="Exemplo">
             <p>
-              Juntando os dois: <code>prato.append(frutas.pop())</code><br>
-              tira a fruta do topo de <code>frutas</code> e coloca no topo de <code>prato</code>.
+              Juntando os dois: <code>prato.append(cacau.pop())</code><br>
+              tira a fruta do topo de <code>cacau</code> e coloca no topo de <code>prato</code>.
             </p>
           </aside>
 
           <p class="desafio">
             <strong>Objetivo:</strong> a <strong>uva</strong> na <code>Filó</code>, e as outras frutas
-            de volta em <code>frutas</code>, na mesma ordem.
+            de volta em <code>cacau</code>, na mesma ordem.
           </p>
 
           <details class="dica">
@@ -69,11 +69,11 @@
             <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
           </div>
           <div class="linhas">
-            <label for="codigo" class="fixo">frutas   = ["laranja", "uva", "maçã"]</label>
+            <label for="codigo" class="fixo">cacau    = ["laranja", "uva", "maçã"]</label>
             <p class="fixo">prato    = []</p>
             <p class="fixo">Filó     = []</p>
             <textarea id="codigo" name="codigo" rows="5" spellcheck="false" autocomplete="off"
-              placeholder="Escreva um comando por linha, ex.: Filó.append(frutas.pop())"></textarea>
+              placeholder="Escreva um comando por linha, ex.: Filó.append(cacau.pop())"></textarea>
             <p class="fixo">print(Filó) <output id="resultado" for="codigo" aria-live="polite"># []</output></p>
             <button type="submit" id="proximo">Próximo</button>
           </div>
@@ -93,17 +93,16 @@
         <figcaption id="legenda">A Filó está esperando a uva…</figcaption>
 
         <ol class="bando estacoes" id="estruturas" aria-label="Pilhas de frutas">
-          <li class="estacao frutas">
-            <div class="pilha" id="pilha-frutas" role="img" aria-label="Pilha do Cacau: base laranja, meio uva, topo maçã">
+          <li class="estacao cacau">
+            <div class="pilha" id="pilha-cacau" role="img" aria-label="Pilha do Cacau: base laranja, meio uva, topo maçã">
               <img class="fruta" src="img/laranja_transparente.png" alt="">
               <img class="fruta" src="img/uva_transparente.png" alt="">
               <img class="fruta" src="img/maca_transparente.png" alt="">
             </div>
             <div class="capivara">
               <span class="avatar"><img src="img/capycode.png" alt="" draggable="false"></span>
-              <span class="valor">Cacau</span>
             </div>
-            <p class="rotulo">Frutas</p>
+            <p class="rotulo">Cacau</p>
           </li>
 
           <li class="estacao prato">

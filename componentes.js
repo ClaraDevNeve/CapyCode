@@ -33,10 +33,10 @@ function montarTopo(el) {
 
 const RODAPE = `
   <p>
-    Site totalmente inspirado no
-    <a class="link-animado" href="https://flexboxfroggy.com/" target="_blank" rel="noopener noreferrer">FLEXBOX FROGGY</a>
+    Inspirado no
+    <a class="link-animado" href="https://flexboxfroggy.com/" target="_blank" rel="noopener noreferrer">Flexbox Froggy</a>, de Thomas Park
     <span class="separador" aria-hidden="true">|</span>
-    <a class="link-animado" href="https://github.com/thomaspark/flexboxfroggy" target="_blank" rel="noopener noreferrer">Repositório do GitHub</a>
+    <a class="link-animado" href="https://github.com/thomaspark/flexboxfroggy" target="_blank" rel="noopener noreferrer">Repositório original</a>
   </p>
   <p>
     <strong>CapyCode</strong> foi criado por:
@@ -48,7 +48,7 @@ const RODAPE = `
     <a class="integrante github" href="https://github.com/ClaraDevNeve/CapyCode" target="_blank" rel="noopener noreferrer"
       aria-label="Repositório do CapyCode no GitHub">
       <img class="icone-github" src="img/icone-github.png" alt="" aria-hidden="true" width="20" height="20">
-      GitHub
+      Repositório do CapyCode
     </a>
   </p>
 `;
