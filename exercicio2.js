@@ -1,9 +1,10 @@
-// CapyCode – Exercício 2: "A torre de frutas"
-// Duas pilhas: frutas (onde as frutas chegam bagunçadas) e auxiliar (a pilha da Filó).
+// CapyCode – Exercício 2: "A uva escondida"
+// Três pilhas: frutas (do Cacau), prato (espera) e Filó (a da capivara).
 // Em todos os arrays, o índice 0 é a base e o último item é o topo.
 
-const MODELO = ["maçã", "laranja", "uva"];
-const INICIAL = ["uva", "laranja", "maçã"];
+const INICIAL = ["laranja", "uva", "maçã"];
+const FILO_ESPERADO = ["uva"];
+const FRUTAS_ESPERADAS = ["laranja", "maçã"];
 
 const SPRITE = {
   "maçã": "img/maca_transparente.png",
@@ -11,7 +12,13 @@ const SPRITE = {
   "uva": "img/uva_transparente.png",
 };
 
-const PILHAS = ["frutas", "auxiliar"];
+const PILHAS = ["frutas", "prato", "Filó"];
+
+const NOMES_AMIGAVEIS = {
+  frutas: "Pilha do Cacau",
+  prato: "Prato de espera",
+  "Filó": "Pilha da Filó",
+};
 
 const editor = document.getElementById("editor");
 const codigo = document.getElementById("codigo");
@@ -21,7 +28,8 @@ const cena = document.querySelector(".cena");
 
 const elementos = {
   frutas: document.getElementById("pilha-frutas"),
-  auxiliar: document.getElementById("pilha-auxiliar"),
+  prato: document.getElementById("pilha-prato"),
+  "Filó": document.getElementById("pilha-filo"),
 };
 
 function listaComAspas(lista) {
@@ -32,12 +40,13 @@ function desenharPilha(nome, lista) {
   const el = elementos[nome];
   if (!el) return;
 
+  const nomeAmigavel = NOMES_AMIGAVEIS[nome];
   el.innerHTML = "";
   el.classList.toggle("vazia", lista.length === 0);
 
   if (lista.length === 0) {
     el.innerHTML = `<span aria-hidden="true">vazia</span>`;
-    el.setAttribute("aria-label", `Pilha ${nome} vazia`);
+    el.setAttribute("aria-label", `${nomeAmigavel} sem frutas`);
     return;
   }
 
@@ -50,20 +59,20 @@ function desenharPilha(nome, lista) {
   }
 
   const topo = lista[lista.length - 1];
-  el.setAttribute("aria-label", `Pilha ${nome}: base ${lista[0]}, topo ${topo}`);
+  el.setAttribute("aria-label", `${nomeAmigavel}: base ${lista[0]}, topo ${topo}`);
 }
 
 function desenhar(pilhas) {
   for (const nome of PILHAS) desenharPilha(nome, pilhas[nome]);
 }
 
-// Aceita só movimentos entre pilhas: auxiliar.append(frutas.pop())
-const MOVER = /^(frutas|auxiliar)\.append\(\s*(frutas|auxiliar)\.pop\(\s*\)\s*\)\s*;?$/;
-const APPEND_LITERAL = /^(frutas|auxiliar)\.append\s*\(/;
-const POP_SOLTO = /^(frutas|auxiliar)\.pop\s*\(\s*\)\s*;?$/;
+// Aceita só movimentos entre pilhas: Filó.append(frutas.pop())
+const MOVER = /^(frutas|prato|Filó)\.append\(\s*(frutas|prato|Filó)\.pop\(\s*\)\s*\)\s*;?$/;
+const APPEND_LITERAL = /^(frutas|prato|Filó)\.append\s*\(/;
+const POP_SOLTO = /^(frutas|prato|Filó)\.pop\s*\(\s*\)\s*;?$/;
 
 function executar(texto) {
-  const pilhas = { frutas: [...INICIAL], auxiliar: [] };
+  const pilhas = { frutas: [...INICIAL], prato: [], "Filó": [] };
   const linhas = texto.split("\n").map(l => l.trim()).filter(Boolean);
 
   for (const linha of linhas) {
@@ -72,11 +81,11 @@ function executar(texto) {
     if (!m) {
       if (APPEND_LITERAL.test(linha)) {
         throw new Error(
-          "Neste nível as frutas só se movem entre pilhas: use auxiliar.append(frutas.pop())."
+          "Neste nível as frutas só se movem entre pilhas: use Filó.append(frutas.pop())."
         );
       }
       if (POP_SOLTO.test(linha)) {
-        throw new Error("Use pop() dentro de um append: auxiliar.append(frutas.pop()).");
+        throw new Error("Use pop() dentro de um append: Filó.append(frutas.pop()).");
       }
       throw new Error(`Comando não reconhecido: ${linha}`);
     }
@@ -96,9 +105,11 @@ function executar(texto) {
 
 function venceu(pilhas) {
   return (
-    pilhas.frutas.length === 0 &&
-    pilhas.auxiliar.length === MODELO.length &&
-    pilhas.auxiliar.every((fruta, i) => fruta === MODELO[i])
+    pilhas.frutas.length === FRUTAS_ESPERADAS.length &&
+    pilhas.frutas.every((fruta, i) => fruta === FRUTAS_ESPERADAS[i]) &&
+    pilhas.prato.length === 0 &&
+    pilhas["Filó"].length === FILO_ESPERADO.length &&
+    pilhas["Filó"].every((fruta, i) => fruta === FILO_ESPERADO[i])
   );
 }
 
@@ -109,13 +120,13 @@ function atualizar() {
 
   try {
     const pilhas = executar(codigo.value);
-    resultado.textContent = `# ${listaComAspas(pilhas.auxiliar)}`;
+    resultado.textContent = `# ${listaComAspas(pilhas["Filó"])}`;
     desenhar(pilhas);
 
     const ganhou = venceu(pilhas);
     legenda.textContent = ganhou
-      ? "A Filó agradece: a torre está pronta! 🎉"
-      : "A Filó está esperando a torre de frutas ficar pronta…";
+      ? "A Filó comeu a uva! 🎉"
+      : "A Filó está esperando a uva…";
     return ganhou;
   } catch (e) {
     resultado.textContent = e.message;
@@ -132,8 +143,8 @@ editor.addEventListener("submit", (ev) => {
     editor.classList.add("ok");
     cena.classList.add("vitoria");
   } else {
-    legenda.textContent = `Ainda não… a pilha da Filó precisa ficar ${MODELO.join(", ")} (da base para o topo).`;
+    legenda.textContent = "Ainda não… entregue a uva à Filó e devolva a maçã ao Cacau.";
   }
 });
 
-desenhar({ frutas: [...INICIAL], auxiliar: [] });
+desenhar({ frutas: [...INICIAL], prato: [], "Filó": [] });

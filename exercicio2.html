@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="CapyCode: aprenda comandos de Pilha ajudando a Filó a montar a torre de frutas.">
+  <meta name="description" content="CapyCode: aprenda comandos de Pilha ajudando a Filó a encontrar a fruta escondida.">
   <title>CapyCode – Nível 2</title>
   <link rel="icon" href="img/favicon.ico" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,67 +26,41 @@
 
         <article class="instrucoes">
           <header>
-            <h2 id="titulo-exercicio">2° Exercício: Pilha — "A torre de frutas"</h2>
+            <h2 id="titulo-exercicio">2° Exercício: Pilha — "A uva escondida"</h2>
           </header>
 
           <p class="boas-vindas">
-            Muito bem! Agora Filó e seus amigos precisam de ajuda com um novo desafio:
-            construir uma torre de frutas!
+            A Filó quer a <strong>uva</strong> para o lanche, mas ela está no meio da pilha de frutas.
           </p>
 
           <p>
-            Uma capivara recebeu a pilha <code>frutas</code> em uma ordem diferente da torre
-            modelo. Para resolver, você tem duas pilhas à disposição: a pilha
-            <code>frutas</code>, que veio bagunçada, e a <code>auxiliar</code>, onde a Filó
-            trabalha.
+            Uma <dfn>pilha</dfn> funciona como frutas empilhadas: só dá para pegar a de cima, o <dfn>topo</dfn>.
           </p>
-
-          <p>
-            Uma pilha funciona seguindo a regra <dfn>LIFO</dfn> (Last In, First Out), ou seja,
-            o último elemento que entra é o primeiro que sai. Imagine uma torre de frutas:
-            você só pode retirar a fruta que está no topo e só pode colocar uma nova fruta
-            no topo.
-          </p>
-
-          <p>Para organizar as frutas, você terá acesso aos seguintes comandos:</p>
 
           <dl class="comandos">
-            <dt><code>append("valor")</code></dt>
-            <dd>adiciona um elemento ao topo da pilha.</dd>
+            <dt><code>frutas.pop()</code></dt>
+            <dd>tira a fruta do topo de <code>frutas</code>.</dd>
 
-            <dt><code>pop()</code></dt>
-            <dd>remove e retorna o elemento que está no topo da pilha.</dd>
+            <dt><code>Filó.append(...)</code></dt>
+            <dd>coloca uma fruta no topo de <code>Filó</code>.</dd>
           </dl>
-
-          <p class="lembrete">
-            <strong>Lembrete:</strong> para retirar uma fruta de uma pilha e guardá-la em
-            outra, utilize <code>pop()</code> junto com <code>append()</code>. Por exemplo:
-            <code>auxiliar.append(frutas.pop())</code> retira a fruta do topo de
-            <code>frutas</code> e a coloca no topo de <code>auxiliar</code>.
-          </p>
 
           <aside class="exemplo" aria-label="Exemplo">
             <p>
-              <strong>Exemplo:</strong> se uma pilha contém
-              <code>["maçã", "laranja", "uva"]</code>, sendo <code>"uva"</code> o elemento
-              do topo, o comando <code>pop()</code> retira <code>"uva"</code> primeiro.
+              Juntando os dois: <code>prato.append(frutas.pop())</code><br>
+              tira a fruta do topo de <code>frutas</code> e coloca no topo de <code>prato</code>.
             </p>
           </aside>
 
           <p class="desafio">
-            As capivaras precisam reproduzir a torre modelo! A pilha <code>frutas</code> está
-            na seguinte ordem, da base para o topo:
-            <code>"uva", "laranja", "maçã"</code>. Já a torre modelo deve ficar na ordem:
-            <code>"maçã", "laranja", "uva"</code>. Leve todas as frutas para a pilha
-            <code>auxiliar</code> da Filó, que precisa terminar igual à torre modelo, e
-            deixe a pilha <code>frutas</code> vazia.
+            <strong>Objetivo:</strong> a <strong>uva</strong> na <code>Filó</code>, e as outras frutas
+            de volta em <code>frutas</code>, na mesma ordem.
           </p>
 
-          <p class="lembrete">
-            <strong>Dica:</strong> transferir uma pilha inteira para outra
-            <em>inverte</em> a ordem das frutas. Compare a pilha recebida com a torre modelo
-            e você vai perceber que não é preciso nenhum comando a mais do que isso.
-          </p>
+          <details class="dica">
+            <summary>Preciso de uma dica</summary>
+            <p>A maçã está em cima da uva e precisa sair antes. Onde dá para guardá-la por um momento?</p>
+          </details>
         </article>
 
         <form class="editor" id="editor" aria-label="Editor de comandos">
@@ -95,11 +69,12 @@
             <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
           </div>
           <div class="linhas">
-            <label for="codigo" class="fixo">frutas = ["uva", "laranja", "maçã"]</label>
-            <p class="fixo">auxiliar = []</p>
+            <label for="codigo" class="fixo">frutas   = ["laranja", "uva", "maçã"]</label>
+            <p class="fixo">prato    = []</p>
+            <p class="fixo">Filó     = []</p>
             <textarea id="codigo" name="codigo" rows="5" spellcheck="false" autocomplete="off"
-              placeholder="Escreva um comando por linha, ex.: auxiliar.append(frutas.pop())"></textarea>
-            <p class="fixo">print(auxiliar) <output id="resultado" for="codigo" aria-live="polite"># []</output></p>
+              placeholder="Escreva um comando por linha, ex.: Filó.append(frutas.pop())"></textarea>
+            <p class="fixo">print(Filó) <output id="resultado" for="codigo" aria-live="polite"># []</output></p>
             <button type="submit" id="proximo">Próximo</button>
           </div>
         </form>
@@ -115,29 +90,31 @@
     <section class="lago ex2" aria-label="Lago das capivaras">
       <h2 class="visualmente-oculto">Visualização das pilhas de frutas</h2>
       <figure class="cena">
-        <figcaption id="legenda">A Filó está esperando a torre de frutas ficar pronta…</figcaption>
+        <figcaption id="legenda">A Filó está esperando a uva…</figcaption>
 
         <ol class="bando estacoes" id="estruturas" aria-label="Pilhas de frutas">
-          <li class="estacao modelo">
-            <div class="pilha flutuante" role="img" aria-label="Torre modelo: maçã na base, laranja no meio e uva no topo">
-              <img class="fruta" src="img/maca_transparente.png" alt="">
-              <img class="fruta" src="img/laranja_transparente.png" alt="">
-              <img class="fruta" src="img/uva_transparente.png" alt="">
-            </div>
-            <p class="rotulo">Torre modelo</p>
-          </li>
-
           <li class="estacao frutas">
-            <div class="pilha" id="pilha-frutas" role="img" aria-label="Pilha frutas: base uva, topo maçã">
-              <img class="fruta" src="img/uva_transparente.png" alt="">
+            <div class="pilha" id="pilha-frutas" role="img" aria-label="Pilha do Cacau: base laranja, meio uva, topo maçã">
               <img class="fruta" src="img/laranja_transparente.png" alt="">
+              <img class="fruta" src="img/uva_transparente.png" alt="">
               <img class="fruta" src="img/maca_transparente.png" alt="">
+            </div>
+            <div class="capivara">
+              <span class="avatar"><img src="img/capycode.png" alt="" draggable="false"></span>
+              <span class="valor">Cacau</span>
             </div>
             <p class="rotulo">Frutas</p>
           </li>
 
-          <li class="estacao auxiliar">
-            <div class="pilha vazia" id="pilha-auxiliar" role="img" aria-label="Pilha auxiliar vazia">
+          <li class="estacao prato">
+            <div class="pilha vazia" id="pilha-prato" role="img" aria-label="Prato de espera vazio">
+              <span aria-hidden="true">vazia</span>
+            </div>
+            <p class="rotulo">Prato</p>
+          </li>
+
+          <li class="estacao filo">
+            <div class="pilha vazia" id="pilha-filo" role="img" aria-label="Pilha da Filó vazia">
               <span aria-hidden="true">vazia</span>
             </div>
             <div class="capivara">

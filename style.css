@@ -168,6 +168,35 @@ dfn { font-style: normal; color: var(--amarelo); }
 
 .desafio { color: var(--amarelo); }
 
+.dica {
+  margin: 0.8rem 0 0;
+  padding: 0.4rem 0.9rem;
+  border-left: 4px solid var(--amarelo);
+  background: rgba(0, 0, 0, 0.12);
+  border-radius: 0 8px 8px 0;
+}
+
+.dica summary {
+  cursor: pointer;
+  color: var(--amarelo);
+  font-size: 1.08rem;
+  font-weight: 700;
+  list-style: none;
+}
+
+.dica summary::-webkit-details-marker { display: none; }
+
+.dica summary::before { content: "▸ "; }
+.dica[open] summary::before { content: "▾ "; }
+
+.dica summary:focus-visible {
+  outline: 2px solid var(--amarelo);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.dica p { margin: 0.5rem 0 0.1rem; }
+
 /* ================= Editor de código ================= */
 .editor {
   display: flex;
@@ -335,7 +364,7 @@ figcaption {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* Quatro estações dividem a largura da cena sem estourar em telas menores */
+  /* Três estações dividem a largura da cena sem estourar em telas menores */
   flex: 1 1 0;
   min-width: 0;
   max-width: 118px;
@@ -353,7 +382,7 @@ figcaption {
   flex-direction: column-reverse;
   align-items: center;
   width: 60%;
-  margin-bottom: -2px;
+  margin-bottom: 0.3rem; /* respiro entre a torre e a capivara/rótulo */
   pointer-events: none;
 }
 
@@ -390,29 +419,16 @@ figcaption {
   white-space: normal;
 }
 
-.ex2 .modelo .rotulo {
+.ex2 .filo .rotulo {
   color: var(--amarelo);
 }
 
-/* A torre modelo flutua no ar, sem capivara embaixo */
-.ex2 .modelo {
-  align-self: center;
-}
-
-.ex2 .modelo .pilha {
+/* A pilha da Filó é o destino: fica em destaque, com a capivara embaixo. */
+.ex2 .filo .pilha {
   filter:
     drop-shadow(0 0 3px var(--amarelo))
     drop-shadow(0 0 8px var(--amarelo))
     drop-shadow(0 0 16px rgba(247, 212, 69, 0.85));
-}
-
-.ex2 .pilha.flutuante {
-  animation: flutuar 3.2s ease-in-out infinite;
-}
-
-@keyframes flutuar {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-8px); }
 }
 
 .capivara.certa .avatar {
@@ -524,6 +540,5 @@ figcaption {
 /* Quem prefere menos movimento fica sem as animações decorativas.
    Fica no fim do arquivo para vencer as declarações de animação acima. */
 @media (prefers-reduced-motion: reduce) {
-  .ex2 .pilha.flutuante,
   .cena.vitoria .capivara { animation: none; }
 }
