@@ -47,7 +47,7 @@ const RODAPE = `
   <p>
     <a class="integrante github" href="https://github.com/ClaraDevNeve/CapyCode" target="_blank" rel="noopener noreferrer"
       aria-label="Repositório do CapyCode no GitHub">
-      <img class="icone-github" src="img/icone-github.png" alt="" aria-hidden="true" width="20" height="20">
+      <img class="icone-github" src="../img/icone-github.png" alt="" aria-hidden="true" width="20" height="20">
       Repositório do CapyCode
     </a>
   </p>

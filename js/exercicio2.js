@@ -7,9 +7,9 @@ const FILO_ESPERADO = ["uva"];
 const CACAU_ESPERADO = ["laranja", "maçã"];
 
 const SPRITE = {
-  "maçã": "img/maca_transparente.png",
-  "laranja": "img/laranja_transparente.png",
-  "uva": "img/uva_transparente.png",
+  "maçã": "../img/maca_transparente.png",
+  "laranja": "../img/laranja_transparente.png",
+  "uva": "../img/uva_transparente.png",
 };
 
 const PILHAS = ["cacau", "cuia", "Filó"];
@@ -49,7 +49,7 @@ function desenharPilha(nome, lista) {
   if (eCuia) {
     const base = document.createElement("img");
     base.className = "cuia";
-    base.src = "img/cuia_transparente.png";
+    base.src = "../img/cuia_transparente.png";
     base.alt = "";
     el.appendChild(base);
   }
