@@ -1,5 +1,5 @@
 // CapyCode – Exercício 2: "A uva escondida"
-// Três pilhas: cacau (a pilha do Cacau), prato (espera) e Filó (a da capivara).
+// Três pilhas: cacau (a pilha do Cacau), cuia (espera) e Filó (a da capivara).
 // Em todos os arrays, o índice 0 é a base e o último item é o topo.
 
 const INICIAL = ["laranja", "uva", "maçã"];
@@ -12,11 +12,11 @@ const SPRITE = {
   "uva": "img/uva_transparente.png",
 };
 
-const PILHAS = ["cacau", "prato", "Filó"];
+const PILHAS = ["cacau", "cuia", "Filó"];
 
 const NOMES_AMIGAVEIS = {
   cacau: "Pilha do Cacau",
-  prato: "Prato de espera",
+  cuia: "Cuia de espera",
   "Filó": "Pilha da Filó",
 };
 
@@ -28,7 +28,7 @@ const cena = document.querySelector(".cena");
 
 const elementos = {
   cacau: document.getElementById("pilha-cacau"),
-  prato: document.getElementById("pilha-prato"),
+  cuia: document.getElementById("pilha-cuia"),
   "Filó": document.getElementById("pilha-filo"),
 };
 
@@ -41,11 +41,21 @@ function desenharPilha(nome, lista) {
   if (!el) return;
 
   const nomeAmigavel = NOMES_AMIGAVEIS[nome];
+  const eCuia = nome === "cuia";
   el.innerHTML = "";
-  el.classList.toggle("vazia", lista.length === 0);
+  el.classList.toggle("vazia", lista.length === 0 && !eCuia);
+
+  // A cuia é sempre a base: as frutas são empilhadas em cima dela.
+  if (eCuia) {
+    const base = document.createElement("img");
+    base.className = "cuia";
+    base.src = "img/cuia_transparente.png";
+    base.alt = "";
+    el.appendChild(base);
+  }
 
   if (lista.length === 0) {
-    el.innerHTML = `<span aria-hidden="true">vazia</span>`;
+    if (!eCuia) el.innerHTML += `<span aria-hidden="true">vazia</span>`;
     el.setAttribute("aria-label", `${nomeAmigavel} sem frutas`);
     return;
   }
@@ -67,12 +77,12 @@ function desenhar(pilhas) {
 }
 
 // Aceita só movimentos entre pilhas: Filó.append(cacau.pop())
-const MOVER = /^(cacau|prato|Filó)\.append\(\s*(cacau|prato|Filó)\.pop\(\s*\)\s*\)\s*;?$/;
-const APPEND_LITERAL = /^(cacau|prato|Filó)\.append\s*\(/;
-const POP_SOLTO = /^(cacau|prato|Filó)\.pop\s*\(\s*\)\s*;?$/;
+const MOVER = /^(cacau|cuia|Filó)\.append\(\s*(cacau|cuia|Filó)\.pop\(\s*\)\s*\)\s*;?$/;
+const APPEND_LITERAL = /^(cacau|cuia|Filó)\.append\s*\(/;
+const POP_SOLTO = /^(cacau|cuia|Filó)\.pop\s*\(\s*\)\s*;?$/;
 
 function executar(texto) {
-  const pilhas = { cacau: [...INICIAL], prato: [], "Filó": [] };
+  const pilhas = { cacau: [...INICIAL], cuia: [], "Filó": [] };
   const linhas = texto.split("\n").map(l => l.trim()).filter(Boolean);
 
   for (const linha of linhas) {
@@ -107,7 +117,7 @@ function venceu(pilhas) {
   return (
     pilhas.cacau.length === CACAU_ESPERADO.length &&
     pilhas.cacau.every((fruta, i) => fruta === CACAU_ESPERADO[i]) &&
-    pilhas.prato.length === 0 &&
+    pilhas.cuia.length === 0 &&
     pilhas["Filó"].length === FILO_ESPERADO.length &&
     pilhas["Filó"].every((fruta, i) => fruta === FILO_ESPERADO[i])
   );
@@ -147,4 +157,4 @@ editor.addEventListener("submit", (ev) => {
   }
 });
 
-desenhar({ cacau: [...INICIAL], prato: [], "Filó": [] });
+desenhar({ cacau: [...INICIAL], cuia: [], "Filó": [] });

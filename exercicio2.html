@@ -11,6 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="preload" as="image" href="img/capycode.png">
+  <link rel="preload" as="image" href="img/cuia_transparente.png">
 </head>
 <body>
 
@@ -47,8 +48,8 @@
 
           <aside class="exemplo" aria-label="Exemplo">
             <p>
-              Juntando os dois: <code>prato.append(cacau.pop())</code><br>
-              tira a fruta do topo de <code>cacau</code> e coloca no topo de <code>prato</code>.
+              Juntando os dois: <code>cuia.append(cacau.pop())</code><br>
+              tira a fruta do topo de <code>cacau</code> e coloca no topo de <code>cuia</code>.
             </p>
           </aside>
 
@@ -70,7 +71,7 @@
           </div>
           <div class="linhas">
             <label for="codigo" class="fixo">cacau    = ["laranja", "uva", "maçã"]</label>
-            <p class="fixo">prato    = []</p>
+            <p class="fixo">cuia     = []</p>
             <p class="fixo">Filó     = []</p>
             <textarea id="codigo" name="codigo" rows="5" spellcheck="false" autocomplete="off"
               placeholder="Escreva um comando por linha, ex.: Filó.append(cacau.pop())"></textarea>
@@ -105,11 +106,11 @@
             <p class="rotulo">Cacau</p>
           </li>
 
-          <li class="estacao prato">
-            <div class="pilha vazia" id="pilha-prato" role="img" aria-label="Prato de espera vazio">
-              <span aria-hidden="true">vazia</span>
+          <li class="estacao cuia">
+            <div class="pilha" id="pilha-cuia" role="img" aria-label="Cuia de espera vazia">
+              <img class="cuia" src="img/cuia_transparente.png" alt="">
             </div>
-            <p class="rotulo">Prato</p>
+            <p class="rotulo">Cuia</p>
           </li>
 
           <li class="estacao filo">

@@ -397,6 +397,15 @@ figcaption {
   margin-bottom: -6%;
 }
 
+/* A cuia é a base da pilha do meio: as frutas ficam empilhadas em cima dela. */
+.ex2 .cuia .pilha .cuia {
+  display: block;
+  width: 100%;
+  height: auto;
+  /* cancela a faixa transparente no topo do PNG para a fruta assentar na borda */
+  margin-top: -21%;
+}
+
 .ex2 .pilha.vazia {
   aspect-ratio: 1 / 2.87; /* altura aproximada de três frutas empilhadas */
   justify-content: center;
