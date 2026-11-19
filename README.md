@@ -1,4 +1,6 @@
-# <img src="img/filo_transparente.png" alt="Filó" width="96"> CapyCode
+# <img src="img/filo_transparente.png" alt="Filó" width="96" align="middle"> CapyCode
+
+<img src="img/readme.png" alt="CapyCode" width="100%">
 
 Jogo didático para aprender lógica de programação com **listas** e **pilhas**. Você escreve comandos no editor e vê o bando de capivaras se reorganizar na hora.
 
@@ -6,7 +8,11 @@ Jogo didático para aprender lógica de programação com **listas** e **pilhas*
 
 Inspirado no [Flexbox Froggy](https://flexboxfroggy.com/), de Thomas Park — [repositório original](https://github.com/thomaspark/flexboxfroggy).
 
-Criado por Maria Clara, Jordan Cunha e Lucas Albuquerque.
+## Autores
+
+- [Maria Clara](https://github.com/ClaraDevNeve)
+- [Jordan Cunha](https://github.com/JORD4N-01)
+- [Lucas Albuquerque](https://github.com/yLucasVale)
 
 ## Níveis
 
