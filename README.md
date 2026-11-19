@@ -1,4 +1,4 @@
-# <img src="img/filo_transparente.png" alt="Filó" width="72" align="left"> CapyCode
+# <img src="img/filo_transparente.png" alt="Filó" width="96"> CapyCode
 
 Jogo didático para aprender lógica de programação com **listas** e **pilhas**. Você escreve comandos no editor e vê o bando de capivaras se reorganizar na hora.
 
