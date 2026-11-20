@@ -1,4 +1,5 @@
 // CapyCode – Exercício 1: "O bando bagunçado"
+// Jordan
 const NOMES = ["Filó", "Cacau", "Lolo", "Nina", "Rex"];
 const INICIAL = ["Filó", "Lolo", "Cacau", "Rex", "Nina"];
 const OBJETIVO = [...NOMES];
@@ -79,12 +80,14 @@ function executar(texto) {
   const linhas = texto.split("\n").map(l => l.trim()).filter(Boolean);
 
   for (const linha of linhas) {
+    // Jordan
     const m = linha.match(/^(?:bando\.)?(insert|pop|remove|append)\s*\((.*)\)\s*;?$/);
     if (!m) throw new Error(`Comando não reconhecido: ${linha}`);
 
     const [, cmd, bruto] = m;
     const args = separarArgumentos(bruto);
 
+    // Jordan
     switch (cmd) {
       case "insert": {
         if (args.length !== 2) throw new Error('insert precisa de (i, "nome")');
@@ -116,6 +119,7 @@ function executar(texto) {
   return lista;
 }
 
+// Jordan
 function desenhar(lista) {
   bandoEl.innerHTML = "";
   lista.forEach((valor, i) => {
@@ -138,11 +142,13 @@ function atualizar() {
     const lista = executar(codigo.value);
     resultado.textContent = `# ${listaComAspas(lista)}`;
     desenhar(lista);
+    // Jordan
     const venceu = lista.length === OBJETIVO.length && lista.every((v, i) => v === OBJETIVO[i]);
     legenda.textContent = venceu
       ? "A Filó agradece: o bando está organizado! 🎉"
       : "A Filó está esperando o bando se organizar…";
     return venceu;
+  // Jordan
   } catch (e) {
     resultado.textContent = e.message;
     resultado.classList.add("erro");
@@ -150,6 +156,7 @@ function atualizar() {
   }
 }
 
+// Jordan
 codigo.addEventListener("input", atualizar);
 
 editor.addEventListener("submit", (ev) => {

@@ -17,6 +17,7 @@
   <main class="jogo">
 
     <!-- ========== Lado esquerdo: instruções + editor + rodapé ========== -->
+    <!-- Lucas -->
     <div class="coluna-esquerda">
 
       <section class="painel" aria-labelledby="titulo-exercicio">
@@ -85,8 +86,10 @@
           </div>
           <div class="linhas">
             <label for="codigo" class="fixo">bando = ["Filó", "Lolo", "Cacau", "Rex", "Nina"]</label>
+            <!-- Lucas -->
             <textarea id="codigo" name="codigo" rows="7" spellcheck="false" autocomplete="off"
               placeholder="Escreva um comando por linha, ex.: remove(&quot;Lolo&quot;)"></textarea>
+            <!-- Lucas -->
             <p class="fixo">print(bando) <output id="resultado" for="codigo" aria-live="polite"># ["Filó", "Lolo", "Cacau", "Rex", "Nina"]</output></p>
             <button type="submit" id="proximo">Próximo</button>
           </div>
@@ -100,10 +103,12 @@
     </div>
 
     <!-- ========== Lado direito: lago + grama com as capivaras ========== -->
+    <!-- Lucas -->
     <section class="lago" aria-label="Lago das capivaras">
       <h2 class="visualmente-oculto">Visualização do bando</h2>
       <figure class="cena">
         <figcaption id="legenda">A Filó está esperando o bando se organizar…</figcaption>
+        <!-- Lucas -->
         <ol class="bando" id="bando" aria-label="Ordem atual do bando"></ol>
       </figure>
     </section>

@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 /* ================= Cores e base ================= */
+/* Maria Clara */
 :root {
   --marrom: #7a4520;
   --marrom-escuro: #5a3620;
@@ -67,6 +68,7 @@ dfn { font-style: normal; color: var(--amarelo); }
   padding: 2rem 3.5rem 2.5rem 4rem;
 }
 
+/* Maria Clara */
 .lago {
   flex: 1;
   display: flex;
@@ -292,6 +294,7 @@ figcaption {
   text-align: center;
 }
 
+/* Maria Clara */
 .bando {
   display: flex;
   min-width: 0;
@@ -440,6 +443,7 @@ figcaption {
     drop-shadow(0 0 16px rgba(247, 212, 69, 0.85));
 }
 
+/* Maria Clara */
 .capivara.certa .avatar {
   filter:
     drop-shadow(0 0 3px var(--amarelo))
@@ -453,6 +457,7 @@ figcaption {
   to   { transform: translateY(0); opacity: 1; }
 }
 
+/* Maria Clara */
 .cena.vitoria .capivara { animation: pular 0.5s ease-in-out infinite alternate; }
 .cena.vitoria .capivara:nth-child(2) { animation-delay: 0.1s; }
 .cena.vitoria .capivara:nth-child(3) { animation-delay: 0.2s; }
@@ -517,6 +522,7 @@ figcaption {
   .ex2 .rotulo { font-size: 0.8rem; }
 }
 
+/* Maria Clara */
 @media (max-width: 800px) {
   .jogo { flex-direction: column; }
   .coluna-esquerda { max-width: 100%; }
